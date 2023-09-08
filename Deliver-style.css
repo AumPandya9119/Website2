@@ -1,0 +1,28 @@
+html{
+    background-color: rgba(76, 76, 225, 0.432);
+    position:fixed; left:600px; top:100px
+}
+
+.labels{
+    font-family:cursive;
+}
+.labels:hover{
+    font-style:italic;
+    cursor:default
+}
+
+.entry{
+    background-color:beige;
+    border-width:1px;    
+}
+
+.entry:hover{
+    background-color: rgba(235, 172, 172, 0.524);
+    border-radius:5px;
+}
+
+.button:hover{
+    border-radius: 5px;
+    background-color: rgba(235, 172, 172, 0.524);
+}
+
