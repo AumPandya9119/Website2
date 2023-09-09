@@ -4,20 +4,30 @@
 <head>
     <title>Delivery_details</title>
     <link rel = "stylesheet" href = "Deliver-style.css">
+    <script src="exp.js"></script>
+
 </head>
 <body>
-<form method = "post" class = "meh">
-    
+<form method = "post" class = "meh" name = "submit-to-google-sheet" id="form">
+
+
+    <!--For item name/number-->
+   
+    <br>
     <!--This is for Name-->
-    <label for = "name" id ="name_label" class = "labels"> Name: </label>
+    <label for = "name" id ="name_label" class = "labels" required> Name: </label>
     <br>
     <input type = "text" id = "name" name="name" class="entry">
+    <br>
+    <label for="phone_no" class="labels">Phone no</label>
+    <br>    
+    <input type="number" name="phone_no" class="entry">
 
     <div><!--For address-->
     <!--Flat/house no-->
         <label for = "house/flat_no" id = "house_label" class = "labels"> House or Flat No.: </label>
         <br>
-        <input type = "text" id = "house/flat_no" name = "house/flat_no" class="entry">
+        <input type = "text" id = "house/flat_no" name = "house_flat_no" class="entry">
         <br>
     <!--landMark-->
 
@@ -28,19 +38,51 @@
     <!--additional info-->
         <label for  = "additional_info" id = "add_label" class = "labels">Additional information</label>
         <br>
-        <input type = "text" id = "additional_info" name="additional_info" class="entry">
+        <input type = "text" id = "additional_info" name="add_info" class="entry">
         <br>
     <!--Pincode-->
         <label for = "pin" id = "in_label" class = labels>Pincode</label>
         <br>
         <input type = "number" id = "pin" name = pin class="entry">
         <br>
+        <label for="item_name_number" class="labels" name="item_name_number"
+        id="item_name_number">Item name or number</label>
+        <br>
+        <input type="text" id="item_name_number" name="item_name_number" class="entry">
     </div>
     <br>
-    <input type = "submit" values = "Yolo" id = "button" class="button">
+    <button type="submit">Send</button>
 
 </form>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzhlFx6wyXMtE3zDJYkMy9yMPpBR88tsqwwBdP-0UHxlKMzq02duB_RxxD9j1J62c8R/exec'
+    
+    const form = document.forms['submit-to-google-sheet']
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
 </body>
+<script>
+    let url="https://script.google.com/macros/s/AKfycbwHAQszi8fnwKbb7YGY_KRsUJZKG-NxlKAYJbroc7UaborvFlffBPFgJ3WSloXpqM-NGQ/exec"
+    let form_=document.querySelector('#form')
+    form_.addEventListener("submit",(e)=>{
+        let d=new FormData(form_);
+        fetch(url,{
+            method:"POST",
+            body:d
+        }).then((res)=>res.text)
+        .then((FinalRes)=>console.log(FinalRes))
+        e.preventDefault();
+
+    })
+</script>
+
 
 
 
