@@ -7,7 +7,9 @@ img{
     border-radius: 15%;
     border-width:10%;
     border-color:black;
-    margin:50px;
+    margin-left:5.10%;
+    margin-top:5%;
+    margin-bottom:5.5%;
     position:relative;
     height:200px;
     width:200px;
@@ -17,6 +19,11 @@ img:hover{
     height:220px;
     width:220px;
     border: 5px solid #555;
+}
+
+.img1,.img2,.img3,.img4{
+    margin-top:5.2%
+
 }
 
 
